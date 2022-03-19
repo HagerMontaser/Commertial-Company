@@ -101,6 +101,12 @@
     <Compile Include="Forms\ExchangeInvoice.Designer.cs">
       <DependentUpon>ExchangeInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Moving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Moving.Designer.cs">
+      <DependentUpon>Moving.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="Forms\ReleaseInvoice.Designer.cs">
       <DependentUpon>ReleaseInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\supplier.cs">
       <SubType>Form</SubType>
@@ -140,6 +152,9 @@
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Release.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReleaseWareHouses_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Release_Info.cs">
@@ -172,11 +187,17 @@
     <EmbeddedResource Include="Forms\ExchangeInvoice.resx">
       <DependentUpon>ExchangeInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Moving.resx">
+      <DependentUpon>Moving.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReleaseInvoice.resx">
       <DependentUpon>ReleaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\supplier.resx">
       <DependentUpon>supplier.cs</DependentUpon>

@@ -256,6 +256,7 @@
           <Parameter Name="IPD" Type="date" Mode="In" />
           <Parameter Name="IED" Type="int" Mode="In" />
         </Function>
+        <Function Name="ReleaseWareHouses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -683,6 +684,7 @@
             <Parameter Name="EID" Mode="In" Type="Int32" />
             <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ReleaseWareHouses" ReturnType="Collection(EFProjectModel.ReleaseWareHouses_Result)" />
         </EntityContainer>
         <ComplexType Name="Exchange_Select_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
@@ -724,6 +726,10 @@
           <Property Type="Int32" Name="Exch_ID" Nullable="false" />
           <Property Type="Int32" Name="I_ID" Nullable="false" />
           <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ReleaseWareHouses_Result">
+          <Property Type="Int32" Name="W_ID" Nullable="false" />
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -907,6 +913,14 @@
                 <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
                 <ScalarProperty Name="I_ID" ColumnName="I_ID" />
                 <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReleaseWareHouses" FunctionName="EFProjectModel.Store.ReleaseWareHouses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.ReleaseWareHouses_Result">
+                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

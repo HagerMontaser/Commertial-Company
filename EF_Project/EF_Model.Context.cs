@@ -268,5 +268,10 @@ namespace EF_Project
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quantity_Select_Result>("Quantity_Select", eIDParameter, iQUANTITYParameter);
         }
+    
+        public virtual ObjectResult<ReleaseWareHouses_Result> ReleaseWareHouses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReleaseWareHouses_Result>("ReleaseWareHouses");
+        }
     }
 }

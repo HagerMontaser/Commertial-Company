@@ -30,18 +30,18 @@ namespace EF_Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Entry));
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.Moving = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.Reports = new System.Windows.Forms.PictureBox();
             this.Exchange = new System.Windows.Forms.PictureBox();
             this.Realease = new System.Windows.Forms.PictureBox();
             this.Item = new System.Windows.Forms.PictureBox();
             this.Customer = new System.Windows.Forms.PictureBox();
             this.Supplier = new System.Windows.Forms.PictureBox();
             this.WareHouse = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Moving)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exchange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Realease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Item)).BeginInit();
@@ -50,15 +50,16 @@ namespace EF_Project
             ((System.ComponentModel.ISupportInitialize)(this.WareHouse)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox8
+            // Moving
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(359, 544);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(265, 254);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 10;
-            this.pictureBox8.TabStop = false;
+            this.Moving.Image = ((System.Drawing.Image)(resources.GetObject("Moving.Image")));
+            this.Moving.Location = new System.Drawing.Point(37, 544);
+            this.Moving.Name = "Moving";
+            this.Moving.Size = new System.Drawing.Size(265, 254);
+            this.Moving.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Moving.TabIndex = 10;
+            this.Moving.TabStop = false;
+            this.Moving.Click += new System.EventHandler(this.Moving_Click);
             // 
             // Exit
             // 
@@ -71,15 +72,16 @@ namespace EF_Project
             this.Exit.TabStop = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // pictureBox6
+            // Reports
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(29, 544);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(273, 254);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 8;
-            this.pictureBox6.TabStop = false;
+            this.Reports.Image = ((System.Drawing.Image)(resources.GetObject("Reports.Image")));
+            this.Reports.Location = new System.Drawing.Point(359, 544);
+            this.Reports.Name = "Reports";
+            this.Reports.Size = new System.Drawing.Size(273, 254);
+            this.Reports.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Reports.TabIndex = 8;
+            this.Reports.TabStop = false;
+            this.Reports.Click += new System.EventHandler(this.Reports_Click);
             // 
             // Exchange
             // 
@@ -153,9 +155,9 @@ namespace EF_Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 805);
-            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.Moving);
             this.Controls.Add(this.Exit);
-            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.Reports);
             this.Controls.Add(this.Exchange);
             this.Controls.Add(this.Realease);
             this.Controls.Add(this.Item);
@@ -167,9 +169,9 @@ namespace EF_Project
             this.Name = "Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Commertial Company";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Moving)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reports)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exchange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Realease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Item)).EndInit();
@@ -187,9 +189,9 @@ namespace EF_Project
         private System.Windows.Forms.PictureBox Item;
         private System.Windows.Forms.PictureBox Realease;
         private System.Windows.Forms.PictureBox Exchange;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox Reports;
         private System.Windows.Forms.PictureBox Exit;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox Moving;
     }
 }
 
