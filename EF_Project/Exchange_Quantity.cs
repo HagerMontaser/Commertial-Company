@@ -14,8 +14,8 @@ namespace EF_Project
     
     public partial class Exchange_Quantity
     {
-        public int Real_ID { get; set; }
-        public int R_Quantity { get; set; }
+        public int Exch_ID { get; set; }
+        public int I_Quantity { get; set; }
         public int I_ID { get; set; }
     
         public virtual Exchange Exchange { get; set; }

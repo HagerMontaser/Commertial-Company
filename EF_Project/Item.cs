@@ -21,7 +21,6 @@ namespace EF_Project
             this.Exchange_Quantity = new HashSet<Exchange_Quantity>();
             this.Releases = new HashSet<Release>();
             this.Item_Info = new HashSet<Item_Info>();
-            this.Release_Info = new HashSet<Release_Info>();
         }
     
         public int I_ID { get; set; }
@@ -35,7 +34,5 @@ namespace EF_Project
         public virtual ICollection<Release> Releases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item_Info> Item_Info { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Release_Info> Release_Info { get; set; }
     }
 }

@@ -10,16 +10,13 @@
 namespace EF_Project
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Release_Info
+    public partial class Invoice_Select_Result
     {
         public int R_ID { get; set; }
         public int I_ID { get; set; }
-        public int I_Quantity { get; set; }
-        public System.DateTime I_ProdDate { get; set; }
-        public int I_Expire { get; set; }
-    
-        public virtual Release Release { get; set; }
+        public int S_ID { get; set; }
+        public int W_ID { get; set; }
+        public System.DateTime R_Date { get; set; }
     }
 }

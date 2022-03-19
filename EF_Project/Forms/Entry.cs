@@ -38,11 +38,16 @@ namespace EF_Project
             AppManger.CustomerForm.Show();
             AppManger.EntryForm.Hide();
         }
+        private void Realease_Click(object sender, EventArgs e)
+        {
+            AppManger.ReleaseForm.Show();
+            AppManger.EntryForm.Hide();
+        }
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-       
+        
     }
 }

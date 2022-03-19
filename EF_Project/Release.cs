@@ -20,16 +20,16 @@ namespace EF_Project
             this.Release_Info = new HashSet<Release_Info>();
         }
     
-        public int E_ID { get; set; }
+        public int R_ID { get; set; }
         public int I_ID { get; set; }
         public int S_ID { get; set; }
         public int W_ID { get; set; }
-        public System.DateTime Real_Date { get; set; }
+        public System.DateTime R_Date { get; set; }
     
         public virtual Item Item { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Release_Info> Release_Info { get; set; }
         public virtual Supplier Supplier { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Release_Info> Release_Info { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace EF_Project
         public static Product ProductForm;
         public static supplier SupplierForm;
         public static Customer CustomerForm;
+        public static ReleaseInvoice ReleaseForm;
 
         /***************************** DB Entities *******************************/
         public static EFProjectEntities Entities;
@@ -25,6 +26,7 @@ namespace EF_Project
         public static MessageBoxButtons OKButton;
         public static MessageBoxIcon ErrorIcon;
         public static MessageBoxIcon InfoIcon;
+        public static MessageBoxIcon WarningIcon;
 
         static AppManger()
         {
@@ -39,12 +41,15 @@ namespace EF_Project
             ErrorIcon = MessageBoxIcon.Error;
             InfoIcon = new MessageBoxIcon();
             InfoIcon = MessageBoxIcon.Information;
+            WarningIcon = new MessageBoxIcon();
+            WarningIcon = MessageBoxIcon.Warning;
 
             //Forms
             WareHouseForm = new WareHouse();
             ProductForm = new Product();
             SupplierForm = new supplier();
             CustomerForm = new Customer();
+            ReleaseForm = new ReleaseInvoice();
             EntryForm = new Entry();
 
         }

@@ -105,6 +105,7 @@ namespace EF_Project.Forms
                 AppManger.Entities.SaveChanges();
                 MessageBox.Show("Item is added", "Done", AppManger.OKButton, AppManger.InfoIcon);
                 FillWareHouseCoboBox();
+                AppManger.ReleaseForm.FillItemCheckList();
                 
             }
         }

@@ -20,7 +20,7 @@ namespace EF_Project
             this.Exchange_Quantity = new HashSet<Exchange_Quantity>();
         }
     
-        public int Real_ID { get; set; }
+        public int Exch_ID { get; set; }
         public int I_ID { get; set; }
         public int C_ID { get; set; }
         public int W_ID { get; set; }

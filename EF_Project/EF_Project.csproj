@@ -98,6 +98,12 @@
     <Compile Include="Forms\Product.Designer.cs">
       <DependentUpon>Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReleaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReleaseInvoice.Designer.cs">
+      <DependentUpon>ReleaseInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\supplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
     <Compile Include="Forms\WareHouse.Designer.cs">
       <DependentUpon>WareHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice_Select_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Item.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
@@ -122,6 +131,9 @@
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Release_Info.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Select_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -147,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Product.resx">
       <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReleaseInvoice.resx">
+      <DependentUpon>ReleaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\supplier.resx">
       <DependentUpon>supplier.cs</DependentUpon>

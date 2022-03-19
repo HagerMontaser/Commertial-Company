@@ -10,16 +10,16 @@
 namespace EF_Project
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Release_Info
+    public partial class Release_Select_Result
     {
+        public string W_Name { get; set; }
+        public string S_Name { get; set; }
         public int R_ID { get; set; }
-        public int I_ID { get; set; }
+        public System.DateTime R_Date { get; set; }
+        public string I_Name { get; set; }
         public int I_Quantity { get; set; }
         public System.DateTime I_ProdDate { get; set; }
         public int I_Expire { get; set; }
-    
-        public virtual Release Release { get; set; }
     }
 }

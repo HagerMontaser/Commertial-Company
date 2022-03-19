@@ -25,8 +25,8 @@ namespace EF_Project
         public string S_Email { get; set; }
         public string S_Website { get; set; }
         public int S_Mobile { get; set; }
-        public Nullable<int> S_Phone { get; set; }
-        public Nullable<int> S_Fax { get; set; }
+        public int S_Phone { get; set; }
+        public int S_Fax { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Release> Releases { get; set; }
