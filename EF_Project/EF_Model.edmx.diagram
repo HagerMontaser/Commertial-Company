@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63b02458fb344a93bb1096e205094acd" Name="Diagram1">
+        <EntityTypeShape EntityType="EFProjectModel.Client" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Exchange" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Exchange_Quantity" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Item" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Item_Info" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Release" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Release_Info" Width="1.5" PointX="11.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Supplier" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFProjectModel.Warehouse" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="EFProjectModel.FK_Release_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Release_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Release_Quantity_Release" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Release_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Exchange_Quantity_Item1" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Exchange_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Item_Unit_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Release_Quantity_Item1" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Exchange_Quantity_Exchange" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Exchange_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="EFProjectModel.FK_Exchange_Warehouse" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
