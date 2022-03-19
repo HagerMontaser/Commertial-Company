@@ -18,6 +18,7 @@ namespace EF_Project
         public static supplier SupplierForm;
         public static Customer CustomerForm;
         public static ReleaseInvoice ReleaseForm;
+        public static ExchangeInvoice ExchangeForm;
 
         /***************************** DB Entities *******************************/
         public static EFProjectEntities Entities;
@@ -50,6 +51,7 @@ namespace EF_Project
             SupplierForm = new supplier();
             CustomerForm = new Customer();
             ReleaseForm = new ReleaseInvoice();
+            ExchangeForm = new ExchangeInvoice();
             EntryForm = new Entry();
 
         }

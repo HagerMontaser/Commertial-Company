@@ -29,12 +29,10 @@ namespace EF_Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReleaseInvoice));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Back = new System.Windows.Forms.PictureBox();
-            this.ExitWareHouse = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReleaseInvoice));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,8 +46,6 @@ namespace EF_Project.Forms
             this.WareHousecomboBox = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.Edit = new System.Windows.Forms.PictureBox();
-            this.Add = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.quantitytextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,37 +63,19 @@ namespace EF_Project.Forms
             this.I_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.I_ProdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.I_Expire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.Back)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExitWareHouse)).BeginInit();
+            this.Edit = new System.Windows.Forms.PictureBox();
+            this.Add = new System.Windows.Forms.PictureBox();
+            this.Back = new System.Windows.Forms.PictureBox();
+            this.ExitWareHouse = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Edit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Add)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Add)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Back)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExitWareHouse)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Back
-            // 
-            this.Back.Image = ((System.Drawing.Image)(resources.GetObject("Back.Image")));
-            this.Back.Location = new System.Drawing.Point(23, 12);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(86, 81);
-            this.Back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Back.TabIndex = 15;
-            this.Back.TabStop = false;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
-            // 
-            // ExitWareHouse
-            // 
-            this.ExitWareHouse.Image = ((System.Drawing.Image)(resources.GetObject("ExitWareHouse.Image")));
-            this.ExitWareHouse.Location = new System.Drawing.Point(1258, 12);
-            this.ExitWareHouse.Name = "ExitWareHouse";
-            this.ExitWareHouse.Size = new System.Drawing.Size(86, 81);
-            this.ExitWareHouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ExitWareHouse.TabIndex = 14;
-            this.ExitWareHouse.TabStop = false;
-            this.ExitWareHouse.Click += new System.EventHandler(this.ExitWareHouse_Click);
             // 
             // groupBox1
             // 
@@ -247,28 +225,6 @@ namespace EF_Project.Forms
             this.dateTimePicker2.Size = new System.Drawing.Size(244, 30);
             this.dateTimePicker2.TabIndex = 34;
             // 
-            // Edit
-            // 
-            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
-            this.Edit.Location = new System.Drawing.Point(236, 363);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(86, 81);
-            this.Edit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Edit.TabIndex = 33;
-            this.Edit.TabStop = false;
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
-            // 
-            // Add
-            // 
-            this.Add.Image = ((System.Drawing.Image)(resources.GetObject("Add.Image")));
-            this.Add.Location = new System.Drawing.Point(122, 363);
-            this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(86, 81);
-            this.Add.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Add.TabIndex = 32;
-            this.Add.TabStop = false;
-            this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -386,8 +342,8 @@ namespace EF_Project.Forms
             this.I_Expire});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.LightSeaGreen;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -477,11 +433,55 @@ namespace EF_Project.Forms
             this.I_Expire.ReadOnly = true;
             this.I_Expire.Width = 91;
             // 
+            // Edit
+            // 
+            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
+            this.Edit.Location = new System.Drawing.Point(236, 363);
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(86, 81);
+            this.Edit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Edit.TabIndex = 33;
+            this.Edit.TabStop = false;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            // 
+            // Add
+            // 
+            this.Add.Image = ((System.Drawing.Image)(resources.GetObject("Add.Image")));
+            this.Add.Location = new System.Drawing.Point(122, 363);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(86, 81);
+            this.Add.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Add.TabIndex = 32;
+            this.Add.TabStop = false;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
+            // Back
+            // 
+            this.Back.Image = ((System.Drawing.Image)(resources.GetObject("Back.Image")));
+            this.Back.Location = new System.Drawing.Point(23, 12);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(86, 81);
+            this.Back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Back.TabIndex = 15;
+            this.Back.TabStop = false;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
+            // 
+            // ExitWareHouse
+            // 
+            this.ExitWareHouse.Image = ((System.Drawing.Image)(resources.GetObject("ExitWareHouse.Image")));
+            this.ExitWareHouse.Location = new System.Drawing.Point(1258, 12);
+            this.ExitWareHouse.Name = "ExitWareHouse";
+            this.ExitWareHouse.Size = new System.Drawing.Size(86, 81);
+            this.ExitWareHouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ExitWareHouse.TabIndex = 14;
+            this.ExitWareHouse.TabStop = false;
+            this.ExitWareHouse.Click += new System.EventHandler(this.ExitWareHouse_Click);
+            // 
             // ReleaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1375, 740);
+            this.ClientSize = new System.Drawing.Size(1375, 720);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -492,16 +492,16 @@ namespace EF_Project.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReleaseInvoice";
             this.Load += new System.EventHandler(this.ReleaseInvoice_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Back)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExitWareHouse)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Edit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Add)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.InvoiceGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Add)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Back)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExitWareHouse)).EndInit();
             this.ResumeLayout(false);
 
         }

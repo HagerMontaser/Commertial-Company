@@ -27,9 +27,9 @@ namespace EF_Project
         public System.DateTime Exch_Date { get; set; }
     
         public virtual Client Client { get; set; }
-        public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exchange_Quantity> Exchange_Quantity { get; set; }
+        public virtual Item Item { get; set; }
         public virtual Warehouse Warehouse { get; set; }
     }
 }

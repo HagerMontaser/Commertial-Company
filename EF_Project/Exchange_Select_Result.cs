@@ -10,14 +10,14 @@
 namespace EF_Project
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Exchange_Quantity
+    public partial class Exchange_Select_Result
     {
+        public string W_Name { get; set; }
+        public string C_Name { get; set; }
         public int Exch_ID { get; set; }
-        public int I_ID { get; set; }
+        public System.DateTime Exch_Date { get; set; }
+        public string I_Name { get; set; }
         public int I_Quantity { get; set; }
-    
-        public virtual Exchange Exchange { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace EF_Project
         public Item()
         {
             this.Exchanges = new HashSet<Exchange>();
-            this.Exchange_Quantity = new HashSet<Exchange_Quantity>();
             this.Releases = new HashSet<Release>();
             this.Item_Info = new HashSet<Item_Info>();
         }
@@ -28,8 +27,6 @@ namespace EF_Project
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exchange> Exchanges { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Exchange_Quantity> Exchange_Quantity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Release> Releases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -33,7 +33,7 @@ namespace EF_Project
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.Exit = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Exchange = new System.Windows.Forms.PictureBox();
             this.Realease = new System.Windows.Forms.PictureBox();
             this.Item = new System.Windows.Forms.PictureBox();
             this.Customer = new System.Windows.Forms.PictureBox();
@@ -42,7 +42,7 @@ namespace EF_Project
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exchange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Realease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Item)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer)).BeginInit();
@@ -81,15 +81,16 @@ namespace EF_Project
             this.pictureBox6.TabIndex = 8;
             this.pictureBox6.TabStop = false;
             // 
-            // pictureBox5
+            // Exchange
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(686, 275);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(267, 254);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 7;
-            this.pictureBox5.TabStop = false;
+            this.Exchange.Image = ((System.Drawing.Image)(resources.GetObject("Exchange.Image")));
+            this.Exchange.Location = new System.Drawing.Point(686, 275);
+            this.Exchange.Name = "Exchange";
+            this.Exchange.Size = new System.Drawing.Size(267, 254);
+            this.Exchange.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Exchange.TabIndex = 7;
+            this.Exchange.TabStop = false;
+            this.Exchange.Click += new System.EventHandler(this.Exchange_Click);
             // 
             // Realease
             // 
@@ -155,7 +156,7 @@ namespace EF_Project
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.Exchange);
             this.Controls.Add(this.Realease);
             this.Controls.Add(this.Item);
             this.Controls.Add(this.Customer);
@@ -169,7 +170,7 @@ namespace EF_Project
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Exchange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Realease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Item)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Customer)).EndInit();
@@ -185,7 +186,7 @@ namespace EF_Project
         private System.Windows.Forms.PictureBox Customer;
         private System.Windows.Forms.PictureBox Item;
         private System.Windows.Forms.PictureBox Realease;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox Exchange;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox Exit;
         private System.Windows.Forms.PictureBox pictureBox8;

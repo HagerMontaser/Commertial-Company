@@ -43,6 +43,11 @@ namespace EF_Project
             AppManger.ReleaseForm.Show();
             AppManger.EntryForm.Hide();
         }
+        private void Exchange_Click(object sender, EventArgs e)
+        {
+            AppManger.ExchangeForm.Show();
+            AppManger.EntryForm.Hide();
+        }
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();

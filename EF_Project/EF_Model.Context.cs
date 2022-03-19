@@ -38,9 +38,119 @@ namespace EF_Project
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
     
+        public virtual int Exchange_Insert(Nullable<int> eID, Nullable<int> iID, Nullable<int> wID, Nullable<int> cID, Nullable<System.DateTime> eDATE)
+        {
+            var eIDParameter = eID.HasValue ?
+                new ObjectParameter("EID", eID) :
+                new ObjectParameter("EID", typeof(int));
+    
+            var iIDParameter = iID.HasValue ?
+                new ObjectParameter("IID", iID) :
+                new ObjectParameter("IID", typeof(int));
+    
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            var cIDParameter = cID.HasValue ?
+                new ObjectParameter("CID", cID) :
+                new ObjectParameter("CID", typeof(int));
+    
+            var eDATEParameter = eDATE.HasValue ?
+                new ObjectParameter("EDATE", eDATE) :
+                new ObjectParameter("EDATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Exchange_Insert", eIDParameter, iIDParameter, wIDParameter, cIDParameter, eDATEParameter);
+        }
+    
+        public virtual ObjectResult<Exchange_Select_Result> Exchange_Select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Exchange_Select_Result>("Exchange_Select");
+        }
+    
+        public virtual int ExchangeQuan_Insert(Nullable<int> eID, Nullable<int> iID, Nullable<int> iQUANTITY)
+        {
+            var eIDParameter = eID.HasValue ?
+                new ObjectParameter("EID", eID) :
+                new ObjectParameter("EID", typeof(int));
+    
+            var iIDParameter = iID.HasValue ?
+                new ObjectParameter("IID", iID) :
+                new ObjectParameter("IID", typeof(int));
+    
+            var iQUANTITYParameter = iQUANTITY.HasValue ?
+                new ObjectParameter("IQUANTITY", iQUANTITY) :
+                new ObjectParameter("IQUANTITY", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExchangeQuan_Insert", eIDParameter, iIDParameter, iQUANTITYParameter);
+        }
+    
+        public virtual ObjectResult<Invoice_Select_Result> Invoice_Select(Nullable<int> rID, Nullable<int> iID)
+        {
+            var rIDParameter = rID.HasValue ?
+                new ObjectParameter("RID", rID) :
+                new ObjectParameter("RID", typeof(int));
+    
+            var iIDParameter = iID.HasValue ?
+                new ObjectParameter("IID", iID) :
+                new ObjectParameter("IID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Invoice_Select_Result>("Invoice_Select", rIDParameter, iIDParameter);
+        }
+    
+        public virtual int Release_Insert(Nullable<int> rID, Nullable<int> iID, Nullable<int> wID, Nullable<int> sID, Nullable<System.DateTime> rDATE)
+        {
+            var rIDParameter = rID.HasValue ?
+                new ObjectParameter("RID", rID) :
+                new ObjectParameter("RID", typeof(int));
+    
+            var iIDParameter = iID.HasValue ?
+                new ObjectParameter("IID", iID) :
+                new ObjectParameter("IID", typeof(int));
+    
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            var sIDParameter = sID.HasValue ?
+                new ObjectParameter("SID", sID) :
+                new ObjectParameter("SID", typeof(int));
+    
+            var rDATEParameter = rDATE.HasValue ?
+                new ObjectParameter("RDATE", rDATE) :
+                new ObjectParameter("RDATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Release_Insert", rIDParameter, iIDParameter, wIDParameter, sIDParameter, rDATEParameter);
+        }
+    
         public virtual ObjectResult<Release_Select_Result> Release_Select()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Release_Select_Result>("Release_Select");
+        }
+    
+        public virtual int ReleaseInfo_Insert(Nullable<int> rID, Nullable<int> iID, Nullable<int> iQUANTITY, Nullable<System.DateTime> iPD, Nullable<int> iED)
+        {
+            var rIDParameter = rID.HasValue ?
+                new ObjectParameter("RID", rID) :
+                new ObjectParameter("RID", typeof(int));
+    
+            var iIDParameter = iID.HasValue ?
+                new ObjectParameter("IID", iID) :
+                new ObjectParameter("IID", typeof(int));
+    
+            var iQUANTITYParameter = iQUANTITY.HasValue ?
+                new ObjectParameter("IQUANTITY", iQUANTITY) :
+                new ObjectParameter("IQUANTITY", typeof(int));
+    
+            var iPDParameter = iPD.HasValue ?
+                new ObjectParameter("IPD", iPD) :
+                new ObjectParameter("IPD", typeof(System.DateTime));
+    
+            var iEDParameter = iED.HasValue ?
+                new ObjectParameter("IED", iED) :
+                new ObjectParameter("IED", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReleaseInfo_Insert", rIDParameter, iIDParameter, iQUANTITYParameter, iPDParameter, iEDParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -146,67 +256,17 @@ namespace EF_Project
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual int Release_Insert(Nullable<int> rID, Nullable<int> iID, Nullable<int> wID, Nullable<int> sID, Nullable<System.DateTime> rDATE)
+        public virtual ObjectResult<Quantity_Select_Result> Quantity_Select(Nullable<int> eID, Nullable<int> iQUANTITY)
         {
-            var rIDParameter = rID.HasValue ?
-                new ObjectParameter("RID", rID) :
-                new ObjectParameter("RID", typeof(int));
-    
-            var iIDParameter = iID.HasValue ?
-                new ObjectParameter("IID", iID) :
-                new ObjectParameter("IID", typeof(int));
-    
-            var wIDParameter = wID.HasValue ?
-                new ObjectParameter("WID", wID) :
-                new ObjectParameter("WID", typeof(int));
-    
-            var sIDParameter = sID.HasValue ?
-                new ObjectParameter("SID", sID) :
-                new ObjectParameter("SID", typeof(int));
-    
-            var rDATEParameter = rDATE.HasValue ?
-                new ObjectParameter("RDATE", rDATE) :
-                new ObjectParameter("RDATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Release_Insert", rIDParameter, iIDParameter, wIDParameter, sIDParameter, rDATEParameter);
-        }
-    
-        public virtual int ReleaseInfo_Insert(Nullable<int> rID, Nullable<int> iID, Nullable<int> iQUANTITY, Nullable<System.DateTime> iPD, Nullable<int> iED)
-        {
-            var rIDParameter = rID.HasValue ?
-                new ObjectParameter("RID", rID) :
-                new ObjectParameter("RID", typeof(int));
-    
-            var iIDParameter = iID.HasValue ?
-                new ObjectParameter("IID", iID) :
-                new ObjectParameter("IID", typeof(int));
+            var eIDParameter = eID.HasValue ?
+                new ObjectParameter("EID", eID) :
+                new ObjectParameter("EID", typeof(int));
     
             var iQUANTITYParameter = iQUANTITY.HasValue ?
                 new ObjectParameter("IQUANTITY", iQUANTITY) :
                 new ObjectParameter("IQUANTITY", typeof(int));
     
-            var iPDParameter = iPD.HasValue ?
-                new ObjectParameter("IPD", iPD) :
-                new ObjectParameter("IPD", typeof(System.DateTime));
-    
-            var iEDParameter = iED.HasValue ?
-                new ObjectParameter("IED", iED) :
-                new ObjectParameter("IED", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReleaseInfo_Insert", rIDParameter, iIDParameter, iQUANTITYParameter, iPDParameter, iEDParameter);
-        }
-    
-        public virtual ObjectResult<Invoice_Select_Result> Invoice_Select(Nullable<int> rID, Nullable<int> iID)
-        {
-            var rIDParameter = rID.HasValue ?
-                new ObjectParameter("RID", rID) :
-                new ObjectParameter("RID", typeof(int));
-    
-            var iIDParameter = iID.HasValue ?
-                new ObjectParameter("IID", iID) :
-                new ObjectParameter("IID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Invoice_Select_Result>("Invoice_Select", rIDParameter, iIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quantity_Select_Result>("Quantity_Select", eIDParameter, iQUANTITYParameter);
         }
     }
 }

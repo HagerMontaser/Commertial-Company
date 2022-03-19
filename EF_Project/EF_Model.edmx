@@ -20,8 +20,9 @@
         <EntityType Name="Exchange">
           <Key>
             <PropertyRef Name="Exch_ID" />
+            <PropertyRef Name="I_ID" />
           </Key>
-          <Property Name="Exch_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exch_ID" Type="int" Nullable="false" />
           <Property Name="I_ID" Type="int" Nullable="false" />
           <Property Name="C_ID" Type="int" Nullable="false" />
           <Property Name="W_ID" Type="int" Nullable="false" />
@@ -30,12 +31,12 @@
         <EntityType Name="Exchange_Quantity">
           <Key>
             <PropertyRef Name="Exch_ID" />
-            <PropertyRef Name="I_Quantity" />
             <PropertyRef Name="I_ID" />
+            <PropertyRef Name="I_Quantity" />
           </Key>
           <Property Name="Exch_ID" Type="int" Nullable="false" />
-          <Property Name="I_Quantity" Type="int" Nullable="false" />
           <Property Name="I_ID" Type="int" Nullable="false" />
+          <Property Name="I_Quantity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -106,6 +107,18 @@
           <Property Name="W_Address" Type="nchar" MaxLength="80" Nullable="false" />
           <Property Name="W_Responsible" Type="nchar" MaxLength="40" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Exchange_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Exchange" Type="Self.Exchange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Exchange">
+              <PropertyRef Name="C_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Exchange_Item">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
           <End Role="Release" Type="Self.Release" Multiplicity="*" />
@@ -118,14 +131,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Exchange_Quantity_Item1">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+        <Association Name="FK_Exchange_Quantity_Exchange">
+          <End Role="Exchange" Type="Self.Exchange" Multiplicity="1" />
           <End Role="Exchange_Quantity" Type="Self.Exchange_Quantity" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Item">
+            <Principal Role="Exchange">
+              <PropertyRef Name="Exch_ID" />
               <PropertyRef Name="I_ID" />
             </Principal>
             <Dependent Role="Exchange_Quantity">
+              <PropertyRef Name="Exch_ID" />
               <PropertyRef Name="I_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -166,18 +181,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Release_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="Exchange" Type="Self.Exchange" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="C_ID" />
-            </Principal>
-            <Dependent Role="Exchange">
-              <PropertyRef Name="C_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Release_Info_Release">
           <End Role="Release" Type="Self.Release" Multiplicity="1" />
           <End Role="Release_Info" Type="Self.Release_Info" Multiplicity="*" />
@@ -204,18 +207,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Release_Quantity_Release">
-          <End Role="Exchange" Type="Self.Exchange" Multiplicity="1" />
-          <End Role="Exchange_Quantity" Type="Self.Exchange_Quantity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Exchange">
-              <PropertyRef Name="Exch_ID" />
-            </Principal>
-            <Dependent Role="Exchange_Quantity">
-              <PropertyRef Name="Exch_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Release_Warehouse">
           <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
           <End Role="Exchange" Type="Self.Exchange" Multiplicity="*" />
@@ -228,10 +219,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Exchange_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="WID" Type="int" Mode="In" />
+          <Parameter Name="CID" Type="int" Mode="In" />
+          <Parameter Name="EDATE" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Exchange_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ExchangeQuan_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="IID" Type="int" Mode="In" />
+          <Parameter Name="IQUANTITY" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="Invoice_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RID" Type="int" Mode="In" />
           <Parameter Name="IID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Quantity_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EID" Type="int" Mode="In" />
+          <Parameter Name="IQUANTITY" Type="int" Mode="In" />
         </Function>
         <Function Name="Release_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RID" Type="int" Mode="In" />
@@ -289,12 +297,16 @@
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exchange_Client" Association="Self.FK_Exchange_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Exchange" EntitySet="Exchange" />
+          </AssociationSet>
           <AssociationSet Name="FK_Exchange_Item" Association="Self.FK_Exchange_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="Release" EntitySet="Release" />
           </AssociationSet>
-          <AssociationSet Name="FK_Exchange_Quantity_Item1" Association="Self.FK_Exchange_Quantity_Item1">
-            <End Role="Item" EntitySet="Item" />
+          <AssociationSet Name="FK_Exchange_Quantity_Exchange" Association="Self.FK_Exchange_Quantity_Exchange">
+            <End Role="Exchange" EntitySet="Exchange" />
             <End Role="Exchange_Quantity" EntitySet="Exchange_Quantity" />
           </AssociationSet>
           <AssociationSet Name="FK_Exchange_Supplier" Association="Self.FK_Exchange_Supplier">
@@ -309,10 +321,6 @@
             <End Role="Item" EntitySet="Item" />
             <End Role="Item_Info" EntitySet="Item_Info" />
           </AssociationSet>
-          <AssociationSet Name="FK_Release_Client" Association="Self.FK_Release_Client">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="Exchange" EntitySet="Exchange" />
-          </AssociationSet>
           <AssociationSet Name="FK_Release_Info_Release" Association="Self.FK_Release_Info_Release">
             <End Role="Release" EntitySet="Release" />
             <End Role="Release_Info" EntitySet="Release_Info" />
@@ -320,10 +328,6 @@
           <AssociationSet Name="FK_Release_Item" Association="Self.FK_Release_Item">
             <End Role="Item" EntitySet="Item" />
             <End Role="Exchange" EntitySet="Exchange" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Release_Quantity_Release" Association="Self.FK_Release_Quantity_Release">
-            <End Role="Exchange" EntitySet="Exchange" />
-            <End Role="Exchange_Quantity" EntitySet="Exchange_Quantity" />
           </AssociationSet>
           <AssociationSet Name="FK_Release_Warehouse" Association="Self.FK_Release_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
@@ -345,33 +349,33 @@
           <Property Name="C_Mobile" Type="Int32" Nullable="false" />
           <Property Name="C_Phone" Type="Int32" />
           <Property Name="C_Fax" Type="Int32" />
-          <NavigationProperty Name="Exchanges" Relationship="Self.FK_Release_Client" FromRole="Client" ToRole="Exchange" />
+          <NavigationProperty Name="Exchanges" Relationship="Self.FK_Exchange_Client" FromRole="Client" ToRole="Exchange" />
         </EntityType>
         <EntityType Name="Exchange">
           <Key>
             <PropertyRef Name="Exch_ID" />
+            <PropertyRef Name="I_ID" />
           </Key>
-          <Property Name="Exch_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exch_ID" Type="Int32" Nullable="false" />
           <Property Name="I_ID" Type="Int32" Nullable="false" />
           <Property Name="C_ID" Type="Int32" Nullable="false" />
           <Property Name="W_ID" Type="Int32" Nullable="false" />
           <Property Name="Exch_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Release_Client" FromRole="Exchange" ToRole="Client" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Exchange_Client" FromRole="Exchange" ToRole="Client" />
+          <NavigationProperty Name="Exchange_Quantity" Relationship="Self.FK_Exchange_Quantity_Exchange" FromRole="Exchange" ToRole="Exchange_Quantity" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Release_Item" FromRole="Exchange" ToRole="Item" />
-          <NavigationProperty Name="Exchange_Quantity" Relationship="Self.FK_Release_Quantity_Release" FromRole="Exchange" ToRole="Exchange_Quantity" />
           <NavigationProperty Name="Warehouse" Relationship="Self.FK_Release_Warehouse" FromRole="Exchange" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="Exchange_Quantity">
           <Key>
             <PropertyRef Name="Exch_ID" />
-            <PropertyRef Name="I_Quantity" />
             <PropertyRef Name="I_ID" />
+            <PropertyRef Name="I_Quantity" />
           </Key>
           <Property Name="Exch_ID" Type="Int32" Nullable="false" />
-          <Property Name="I_Quantity" Type="Int32" Nullable="false" />
           <Property Name="I_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Exchange" Relationship="Self.FK_Release_Quantity_Release" FromRole="Exchange_Quantity" ToRole="Exchange" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_Exchange_Quantity_Item1" FromRole="Exchange_Quantity" ToRole="Item" />
+          <Property Name="I_Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exchange" Relationship="Self.FK_Exchange_Quantity_Exchange" FromRole="Exchange_Quantity" ToRole="Exchange" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -380,7 +384,6 @@
           <Property Name="I_ID" Type="Int32" Nullable="false" />
           <Property Name="I_Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Exchanges" Relationship="Self.FK_Release_Item" FromRole="Item" ToRole="Exchange" />
-          <NavigationProperty Name="Exchange_Quantity" Relationship="Self.FK_Exchange_Quantity_Item1" FromRole="Item" ToRole="Exchange_Quantity" />
           <NavigationProperty Name="Releases" Relationship="Self.FK_Exchange_Item" FromRole="Item" ToRole="Release" />
           <NavigationProperty Name="Item_Info" Relationship="Self.FK_Item_Unit_Item" FromRole="Item" ToRole="Item_Info" />
         </EntityType>
@@ -455,7 +458,7 @@
           <NavigationProperty Name="Exchanges" Relationship="Self.FK_Release_Warehouse" FromRole="Warehouse" ToRole="Exchange" />
           <NavigationProperty Name="Releases" Relationship="Self.FK_Exchange_Warehouse" FromRole="Warehouse" ToRole="Release" />
         </EntityType>
-        <Association Name="FK_Release_Client">
+        <Association Name="FK_Exchange_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Exchange" Type="Self.Exchange" Multiplicity="*" />
           <ReferentialConstraint>
@@ -464,6 +467,20 @@
             </Principal>
             <Dependent Role="Exchange">
               <PropertyRef Name="C_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exchange_Quantity_Exchange">
+          <End Role="Exchange" Type="Self.Exchange" Multiplicity="1" />
+          <End Role="Exchange_Quantity" Type="Self.Exchange_Quantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exchange">
+              <PropertyRef Name="Exch_ID" />
+              <PropertyRef Name="I_ID" />
+            </Principal>
+            <Dependent Role="Exchange_Quantity">
+              <PropertyRef Name="Exch_ID" />
+              <PropertyRef Name="I_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -479,18 +496,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Release_Quantity_Release">
-          <End Role="Exchange" Type="Self.Exchange" Multiplicity="1" />
-          <End Role="Exchange_Quantity" Type="Self.Exchange_Quantity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Exchange">
-              <PropertyRef Name="Exch_ID" />
-            </Principal>
-            <Dependent Role="Exchange_Quantity">
-              <PropertyRef Name="Exch_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Release_Warehouse">
           <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
           <End Role="Exchange" Type="Self.Exchange" Multiplicity="*" />
@@ -500,18 +505,6 @@
             </Principal>
             <Dependent Role="Exchange">
               <PropertyRef Name="W_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Exchange_Quantity_Item1">
-          <End Role="Item" Type="Self.Item" Multiplicity="1" />
-          <End Role="Exchange_Quantity" Type="Self.Exchange_Quantity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Item">
-              <PropertyRef Name="I_ID" />
-            </Principal>
-            <Dependent Role="Exchange_Quantity">
-              <PropertyRef Name="I_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -588,25 +581,21 @@
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
-          <AssociationSet Name="FK_Release_Client" Association="Self.FK_Release_Client">
+          <AssociationSet Name="FK_Exchange_Client" Association="Self.FK_Exchange_Client">
             <End Role="Client" EntitySet="Clients" />
             <End Role="Exchange" EntitySet="Exchanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exchange_Quantity_Exchange" Association="Self.FK_Exchange_Quantity_Exchange">
+            <End Role="Exchange" EntitySet="Exchanges" />
+            <End Role="Exchange_Quantity" EntitySet="Exchange_Quantity" />
           </AssociationSet>
           <AssociationSet Name="FK_Release_Item" Association="Self.FK_Release_Item">
             <End Role="Item" EntitySet="Items" />
             <End Role="Exchange" EntitySet="Exchanges" />
           </AssociationSet>
-          <AssociationSet Name="FK_Release_Quantity_Release" Association="Self.FK_Release_Quantity_Release">
-            <End Role="Exchange" EntitySet="Exchanges" />
-            <End Role="Exchange_Quantity" EntitySet="Exchange_Quantity" />
-          </AssociationSet>
           <AssociationSet Name="FK_Release_Warehouse" Association="Self.FK_Release_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouses" />
             <End Role="Exchange" EntitySet="Exchanges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Exchange_Quantity_Item1" Association="Self.FK_Exchange_Quantity_Item1">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="Exchange_Quantity" EntitySet="Exchange_Quantity" />
           </AssociationSet>
           <AssociationSet Name="FK_Exchange_Item" Association="Self.FK_Exchange_Item">
             <End Role="Item" EntitySet="Items" />
@@ -628,7 +617,38 @@
             <End Role="Release" EntitySet="Releases" />
             <End Role="Release_Info" EntitySet="Release_Info" />
           </AssociationSet>
+          <FunctionImport Name="Exchange_Insert">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="WID" Mode="In" Type="Int32" />
+            <Parameter Name="CID" Mode="In" Type="Int32" />
+            <Parameter Name="EDATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Exchange_Select" ReturnType="Collection(EFProjectModel.Exchange_Select_Result)" />
+          <FunctionImport Name="ExchangeQuan_Insert">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Invoice_Select" ReturnType="Collection(EFProjectModel.Invoice_Select_Result)">
+            <Parameter Name="RID" Mode="In" Type="Int32" />
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Release_Insert">
+            <Parameter Name="RID" Mode="In" Type="Int32" />
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="WID" Mode="In" Type="Int32" />
+            <Parameter Name="SID" Mode="In" Type="Int32" />
+            <Parameter Name="RDATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="Release_Select" ReturnType="Collection(EFProjectModel.Release_Select_Result)" />
+          <FunctionImport Name="ReleaseInfo_Insert">
+            <Parameter Name="RID" Mode="In" Type="Int32" />
+            <Parameter Name="IID" Mode="In" Type="Int32" />
+            <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="IPD" Mode="In" Type="DateTime" />
+            <Parameter Name="IED" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -659,25 +679,26 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="Release_Insert">
-            <Parameter Name="RID" Mode="In" Type="Int32" />
-            <Parameter Name="IID" Mode="In" Type="Int32" />
-            <Parameter Name="WID" Mode="In" Type="Int32" />
-            <Parameter Name="SID" Mode="In" Type="Int32" />
-            <Parameter Name="RDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="ReleaseInfo_Insert">
-            <Parameter Name="RID" Mode="In" Type="Int32" />
-            <Parameter Name="IID" Mode="In" Type="Int32" />
+          <FunctionImport Name="Quantity_Select" ReturnType="Collection(EFProjectModel.Quantity_Select_Result)">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
             <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
-            <Parameter Name="IPD" Mode="In" Type="DateTime" />
-            <Parameter Name="IED" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Invoice_Select" ReturnType="Collection(EFProjectModel.Invoice_Select_Result)">
-            <Parameter Name="RID" Mode="In" Type="Int32" />
-            <Parameter Name="IID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="Exchange_Select_Result">
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Exch_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Exch_Date" Nullable="false" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Invoice_Select_Result">
+          <Property Type="Int32" Name="R_ID" Nullable="false" />
+          <Property Type="Int32" Name="I_ID" Nullable="false" />
+          <Property Type="Int32" Name="S_ID" Nullable="false" />
+          <Property Type="Int32" Name="W_ID" Nullable="false" />
+          <Property Type="DateTime" Name="R_Date" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="Release_Select_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
           <Property Type="String" Name="S_Name" Nullable="false" MaxLength="20" />
@@ -699,12 +720,10 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="Invoice_Select_Result">
-          <Property Type="Int32" Name="R_ID" Nullable="false" />
+        <ComplexType Name="Quantity_Select_Result">
+          <Property Type="Int32" Name="Exch_ID" Nullable="false" />
           <Property Type="Int32" Name="I_ID" Nullable="false" />
-          <Property Type="Int32" Name="S_ID" Nullable="false" />
-          <Property Type="Int32" Name="W_ID" Nullable="false" />
-          <Property Type="DateTime" Name="R_Date" Nullable="false" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -740,8 +759,8 @@
             <EntityTypeMapping TypeName="EFProjectModel.Exchange_Quantity">
               <MappingFragment StoreEntitySet="Exchange_Quantity">
                 <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
-                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
                 <ScalarProperty Name="I_ID" ColumnName="I_ID" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -817,6 +836,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Exchange_Insert" FunctionName="EFProjectModel.Store.Exchange_Insert" />
+          <FunctionImportMapping FunctionImportName="Exchange_Select" FunctionName="EFProjectModel.Store.Exchange_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.Exchange_Select_Result">
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
+                <ScalarProperty Name="Exch_Date" ColumnName="Exch_Date" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExchangeQuan_Insert" FunctionName="EFProjectModel.Store.ExchangeQuan_Insert" />
+          <FunctionImportMapping FunctionImportName="Invoice_Select" FunctionName="EFProjectModel.Store.Invoice_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.Invoice_Select_Result">
+                <ScalarProperty Name="R_ID" ColumnName="R_ID" />
+                <ScalarProperty Name="I_ID" ColumnName="I_ID" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
+                <ScalarProperty Name="R_Date" ColumnName="R_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Release_Insert" FunctionName="EFProjectModel.Store.Release_Insert" />
           <FunctionImportMapping FunctionImportName="Release_Select" FunctionName="EFProjectModel.Store.Release_Select">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EFProjectModel.Release_Select_Result">
@@ -831,6 +876,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReleaseInfo_Insert" FunctionName="EFProjectModel.Store.ReleaseInfo_Insert" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EFProjectModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EFProjectModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EFProjectModel.Store.sp_dropdiagram" />
@@ -855,16 +901,12 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EFProjectModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EFProjectModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Release_Insert" FunctionName="EFProjectModel.Store.Release_Insert" />
-          <FunctionImportMapping FunctionImportName="ReleaseInfo_Insert" FunctionName="EFProjectModel.Store.ReleaseInfo_Insert" />
-          <FunctionImportMapping FunctionImportName="Invoice_Select" FunctionName="EFProjectModel.Store.Invoice_Select">
+          <FunctionImportMapping FunctionImportName="Quantity_Select" FunctionName="EFProjectModel.Store.Quantity_Select">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EFProjectModel.Invoice_Select_Result">
-                <ScalarProperty Name="R_ID" ColumnName="R_ID" />
+              <ComplexTypeMapping TypeName="EFProjectModel.Quantity_Select_Result">
+                <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
                 <ScalarProperty Name="I_ID" ColumnName="I_ID" />
-                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
-                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
-                <ScalarProperty Name="R_Date" ColumnName="R_Date" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
