@@ -39,11 +39,30 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +102,45 @@
     <Compile Include="Exchange_Select_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice_Select_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsMovement1_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsMovement_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsWareHouse_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item_Info.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Quantity_Select_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReleaseWareHouses_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Info.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Release_Select_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +177,6 @@
     <Compile Include="Forms\ReleaseInvoice.Designer.cs">
       <DependentUpon>ReleaseInvoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports.Designer.cs">
-      <DependentUpon>Reports.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\supplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,30 +189,15 @@
     <Compile Include="Forms\WareHouse.Designer.cs">
       <DependentUpon>WareHouse.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoice_Select_Result.cs">
-      <DependentUpon>EF_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
-      <DependentUpon>EF_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Item_Info.cs">
-      <DependentUpon>EF_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantity_Select_Result.cs">
+    <Compile Include="SelectItemDur_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Release.cs">
+    <Compile Include="SelectItemExpire_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ReleaseWareHouses_Result.cs">
-      <DependentUpon>EF_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Release_Info.cs">
-      <DependentUpon>EF_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Release_Select_Result.cs">
+    <Compile Include="SelectWareHouse_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -178,6 +215,12 @@
     <Compile Include="Warehouse.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,9 +238,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReleaseInvoice.resx">
       <DependentUpon>ReleaseInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports.resx">
-      <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\supplier.resx">
       <DependentUpon>supplier.cs</DependentUpon>
@@ -224,6 +264,10 @@
       <DependentUpon>EF_Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ItemsMovement1_Result.datasource" />
+    <None Include="Properties\DataSources\ItemsMovement_Result.datasource" />
+    <None Include="Properties\DataSources\ItemsWareHouse_Result.datasource" />
+    <None Include="Properties\DataSources\SelectWareHouse_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -240,6 +284,7 @@
   <ItemGroup>
     <None Include="Resources\button.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="EF_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

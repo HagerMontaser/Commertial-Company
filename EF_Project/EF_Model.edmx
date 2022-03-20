@@ -237,6 +237,19 @@
           <Parameter Name="RID" Type="int" Mode="In" />
           <Parameter Name="IID" Type="int" Mode="In" />
         </Function>
+        <Function Name="ItemsMovement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+          <Parameter Name="WID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ItemsMovement1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+          <Parameter Name="WID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ItemsWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Quantity_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EID" Type="int" Mode="In" />
           <Parameter Name="IQUANTITY" Type="int" Mode="In" />
@@ -257,6 +270,18 @@
           <Parameter Name="IED" Type="int" Mode="In" />
         </Function>
         <Function Name="ReleaseWareHouses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectItemDur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="type" Type="nchar" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SelectItemExpire" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="type" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="SelectWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WID" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -635,6 +660,23 @@
             <Parameter Name="RID" Mode="In" Type="Int32" />
             <Parameter Name="IID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ItemsMovement" ReturnType="Collection(EFProjectModel.ItemsMovement_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ItemsMovement1" ReturnType="Collection(EFProjectModel.ItemsMovement1_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="WID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ItemsWareHouse" ReturnType="Collection(EFProjectModel.ItemsWareHouse_Result)">
+          <Parameter Name="WID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Quantity_Select" ReturnType="Collection(EFProjectModel.Quantity_Select_Result)">
+            <Parameter Name="EID" Mode="In" Type="Int32" />
+            <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Release_Insert">
             <Parameter Name="RID" Mode="In" Type="Int32" />
             <Parameter Name="IID" Mode="In" Type="Int32" />
@@ -649,6 +691,10 @@
             <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
             <Parameter Name="IPD" Mode="In" Type="DateTime" />
             <Parameter Name="IED" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ReleaseWareHouses" ReturnType="Collection(EFProjectModel.ReleaseWareHouses_Result)" />
+          <FunctionImport Name="SelectWareHouse" ReturnType="Collection(EFProjectModel.SelectWareHouse_Result)">
+          <Parameter Name="WID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -680,11 +726,15 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="Quantity_Select" ReturnType="Collection(EFProjectModel.Quantity_Select_Result)">
-            <Parameter Name="EID" Mode="In" Type="Int32" />
-            <Parameter Name="IQUANTITY" Mode="In" Type="Int32" />
+          <FunctionImport Name="SelectItemDur" ReturnType="Collection(EFProjectModel.SelectItemDur_Result)">
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="ReleaseWareHouses" ReturnType="Collection(EFProjectModel.ReleaseWareHouses_Result)" />
+          <FunctionImport Name="SelectItemExpire" ReturnType="Collection(EFProjectModel.SelectItemExpire_Result)">
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Exchange_Select_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
@@ -701,6 +751,32 @@
           <Property Type="Int32" Name="W_ID" Nullable="false" />
           <Property Type="DateTime" Name="R_Date" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="ItemsMovement_Result">
+          <Property Type="Int32" Name="R_ID" Nullable="false" />
+          <Property Type="DateTime" Name="R_Date" Nullable="false" />
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="S_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ItemsMovement1_Result">
+          <Property Type="Int32" Name="Exch_ID" Nullable="false" />
+          <Property Type="DateTime" Name="Exch_Date" Nullable="false" />
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="C_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ItemsWareHouse_Result">
+          <Property Type="Int32" Name="I_ID" Nullable="false" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="unit" Nullable="false" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="Quantity_Select_Result">
+          <Property Type="Int32" Name="Exch_ID" Nullable="false" />
+          <Property Type="Int32" Name="I_ID" Nullable="false" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="Release_Select_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
           <Property Type="String" Name="S_Name" Nullable="false" MaxLength="20" />
@@ -710,6 +786,16 @@
           <Property Type="Int32" Name="I_Quantity" Nullable="false" />
           <Property Type="DateTime" Name="I_ProdDate" Nullable="false" />
           <Property Type="Int32" Name="I_Expire" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ReleaseWareHouses_Result">
+          <Property Type="Int32" Name="W_ID" Nullable="false" />
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="SelectWareHouse_Result">
+          <Property Type="Int32" Name="W_ID" Nullable="false" />
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="W_Address" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="W_Responsible" Nullable="false" MaxLength="40" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -722,14 +808,18 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="Quantity_Select_Result">
-          <Property Type="Int32" Name="Exch_ID" Nullable="false" />
-          <Property Type="Int32" Name="I_ID" Nullable="false" />
-          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="ReleaseWareHouses_Result">
-          <Property Type="Int32" Name="W_ID" Nullable="false" />
+        <ComplexType Name="SelectItemDur_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+          <Property Type="DateTime" Name="R_Date" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectItemExpire_Result">
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+          <Property Type="Int32" Name="I_Expire" Nullable="false" />
+          <Property Type="DateTime" Name="I_ProdDate" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -867,6 +957,48 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ItemsMovement" FunctionName="EFProjectModel.Store.ItemsMovement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.ItemsMovement_Result">
+                <ScalarProperty Name="R_ID" ColumnName="R_ID" />
+                <ScalarProperty Name="R_Date" ColumnName="R_Date" />
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ItemsMovement1" FunctionName="EFProjectModel.Store.ItemsMovement1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.ItemsMovement1_Result">
+                <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
+                <ScalarProperty Name="Exch_Date" ColumnName="Exch_Date" />
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ItemsWareHouse" FunctionName="EFProjectModel.Store.ItemsWareHouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.ItemsWareHouse_Result">
+                <ScalarProperty Name="I_ID" ColumnName="I_ID" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Quantity_Select" FunctionName="EFProjectModel.Store.Quantity_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.Quantity_Select_Result">
+                <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
+                <ScalarProperty Name="I_ID" ColumnName="I_ID" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Release_Insert" FunctionName="EFProjectModel.Store.Release_Insert" />
           <FunctionImportMapping FunctionImportName="Release_Select" FunctionName="EFProjectModel.Store.Release_Select">
             <ResultMapping>
@@ -883,6 +1015,24 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ReleaseInfo_Insert" FunctionName="EFProjectModel.Store.ReleaseInfo_Insert" />
+          <FunctionImportMapping FunctionImportName="ReleaseWareHouses" FunctionName="EFProjectModel.Store.ReleaseWareHouses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.ReleaseWareHouses_Result">
+                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectWareHouse" FunctionName="EFProjectModel.Store.SelectWareHouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EFProjectModel.SelectWareHouse_Result">
+                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="W_Address" ColumnName="W_Address" />
+                <ScalarProperty Name="W_Responsible" ColumnName="W_Responsible" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EFProjectModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EFProjectModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EFProjectModel.Store.sp_dropdiagram" />
@@ -907,20 +1057,24 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EFProjectModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EFProjectModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Quantity_Select" FunctionName="EFProjectModel.Store.Quantity_Select">
+          <FunctionImportMapping FunctionImportName="SelectItemDur" FunctionName="EFProjectModel.Store.SelectItemDur">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EFProjectModel.Quantity_Select_Result">
-                <ScalarProperty Name="Exch_ID" ColumnName="Exch_ID" />
-                <ScalarProperty Name="I_ID" ColumnName="I_ID" />
+              <ComplexTypeMapping TypeName="EFProjectModel.SelectItemDur_Result">
+                <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
                 <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+                <ScalarProperty Name="R_Date" ColumnName="R_Date" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ReleaseWareHouses" FunctionName="EFProjectModel.Store.ReleaseWareHouses">
+          <FunctionImportMapping FunctionImportName="SelectItemExpire" FunctionName="EFProjectModel.Store.SelectItemExpire">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EFProjectModel.ReleaseWareHouses_Result">
-                <ScalarProperty Name="W_ID" ColumnName="W_ID" />
+              <ComplexTypeMapping TypeName="EFProjectModel.SelectItemExpire_Result">
                 <ScalarProperty Name="W_Name" ColumnName="W_Name" />
+                <ScalarProperty Name="I_Name" ColumnName="I_Name" />
+                <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
+                <ScalarProperty Name="I_Expire" ColumnName="I_Expire" />
+                <ScalarProperty Name="I_ProdDate" ColumnName="I_ProdDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

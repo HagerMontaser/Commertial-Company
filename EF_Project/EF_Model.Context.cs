@@ -98,6 +98,62 @@ namespace EF_Project
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Invoice_Select_Result>("Invoice_Select", rIDParameter, iIDParameter);
         }
     
+        public virtual ObjectResult<ItemsMovement_Result> ItemsMovement(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<int> wID)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemsMovement_Result>("ItemsMovement", fromDateParameter, toDateParameter, wIDParameter);
+        }
+    
+        public virtual ObjectResult<ItemsMovement1_Result> ItemsMovement1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<int> wID)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemsMovement1_Result>("ItemsMovement1", fromDateParameter, toDateParameter, wIDParameter);
+        }
+    
+        public virtual ObjectResult<ItemsWareHouse_Result> ItemsWareHouse(Nullable<int> wID)
+        {
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemsWareHouse_Result>("ItemsWareHouse", wIDParameter);
+        }
+    
+        public virtual ObjectResult<Quantity_Select_Result> Quantity_Select(Nullable<int> eID, Nullable<int> iQUANTITY)
+        {
+            var eIDParameter = eID.HasValue ?
+                new ObjectParameter("EID", eID) :
+                new ObjectParameter("EID", typeof(int));
+    
+            var iQUANTITYParameter = iQUANTITY.HasValue ?
+                new ObjectParameter("IQUANTITY", iQUANTITY) :
+                new ObjectParameter("IQUANTITY", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quantity_Select_Result>("Quantity_Select", eIDParameter, iQUANTITYParameter);
+        }
+    
         public virtual int Release_Insert(Nullable<int> rID, Nullable<int> iID, Nullable<int> wID, Nullable<int> sID, Nullable<System.DateTime> rDATE)
         {
             var rIDParameter = rID.HasValue ?
@@ -151,6 +207,20 @@ namespace EF_Project
                 new ObjectParameter("IED", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReleaseInfo_Insert", rIDParameter, iIDParameter, iQUANTITYParameter, iPDParameter, iEDParameter);
+        }
+    
+        public virtual ObjectResult<ReleaseWareHouses_Result> ReleaseWareHouses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReleaseWareHouses_Result>("ReleaseWareHouses");
+        }
+    
+        public virtual ObjectResult<SelectWareHouse_Result> SelectWareHouse(Nullable<int> wID)
+        {
+            var wIDParameter = wID.HasValue ?
+                new ObjectParameter("WID", wID) :
+                new ObjectParameter("WID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectWareHouse_Result>("SelectWareHouse", wIDParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -256,22 +326,34 @@ namespace EF_Project
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<Quantity_Select_Result> Quantity_Select(Nullable<int> eID, Nullable<int> iQUANTITY)
+        public virtual ObjectResult<SelectItemDur_Result> SelectItemDur(Nullable<int> duration, string type, Nullable<System.DateTime> fromDate)
         {
-            var eIDParameter = eID.HasValue ?
-                new ObjectParameter("EID", eID) :
-                new ObjectParameter("EID", typeof(int));
+            var durationParameter = duration.HasValue ?
+                new ObjectParameter("Duration", duration) :
+                new ObjectParameter("Duration", typeof(int));
     
-            var iQUANTITYParameter = iQUANTITY.HasValue ?
-                new ObjectParameter("IQUANTITY", iQUANTITY) :
-                new ObjectParameter("IQUANTITY", typeof(int));
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quantity_Select_Result>("Quantity_Select", eIDParameter, iQUANTITYParameter);
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectItemDur_Result>("SelectItemDur", durationParameter, typeParameter, fromDateParameter);
         }
     
-        public virtual ObjectResult<ReleaseWareHouses_Result> ReleaseWareHouses()
+        public virtual ObjectResult<SelectItemExpire_Result> SelectItemExpire(Nullable<int> duration, string type)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReleaseWareHouses_Result>("ReleaseWareHouses");
+            var durationParameter = duration.HasValue ?
+                new ObjectParameter("Duration", duration) :
+                new ObjectParameter("Duration", typeof(int));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectItemExpire_Result>("SelectItemExpire", durationParameter, typeParameter);
         }
     }
 }
