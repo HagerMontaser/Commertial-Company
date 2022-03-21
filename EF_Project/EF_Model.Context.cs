@@ -355,5 +355,18 @@ namespace EF_Project
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectItemExpire_Result>("SelectItemExpire", durationParameter, typeParameter);
         }
+    
+        public virtual ObjectResult<SelectItemExpire1_Result> SelectItemExpire1(Nullable<int> duration, string type)
+        {
+            var durationParameter = duration.HasValue ?
+                new ObjectParameter("Duration", duration) :
+                new ObjectParameter("Duration", typeof(int));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectItemExpire1_Result>("SelectItemExpire1", durationParameter, typeParameter);
+        }
     }
 }

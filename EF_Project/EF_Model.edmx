@@ -275,7 +275,7 @@
           <Parameter Name="type" Type="nchar" Mode="In" />
           <Parameter Name="FromDate" Type="date" Mode="In" />
         </Function>
-        <Function Name="SelectItemExpire" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="SelectItemExpire1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Duration" Type="int" Mode="In" />
           <Parameter Name="type" Type="nchar" Mode="In" />
         </Function>
@@ -735,6 +735,10 @@
             <Parameter Name="Duration" Mode="In" Type="Int32" />
             <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SelectItemExpire1" ReturnType="Collection(EFProjectModel.SelectItemExpire1_Result)">
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="type" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Exchange_Select_Result">
           <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
@@ -820,6 +824,14 @@
           <Property Type="Int32" Name="I_Quantity" Nullable="false" />
           <Property Type="Int32" Name="I_Expire" Nullable="false" />
           <Property Type="DateTime" Name="I_ProdDate" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectItemExpire1_Result">
+          <Property Type="String" Name="W_Name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="I_Name" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="I_Quantity" Nullable="false" />
+          <Property Type="Int32" Name="I_Expire" Nullable="false" />
+          <Property Type="DateTime" Name="I_ProdDate" Nullable="false" />
+          <Property Type="Int32" Name="RemainDur" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1067,14 +1079,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SelectItemExpire" FunctionName="EFProjectModel.Store.SelectItemExpire">
+          <FunctionImportMapping FunctionImportName="SelectItemExpire1" FunctionName="EFProjectModel.Store.SelectItemExpire1">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EFProjectModel.SelectItemExpire_Result">
+              <ComplexTypeMapping TypeName="EFProjectModel.SelectItemExpire1_Result">
                 <ScalarProperty Name="W_Name" ColumnName="W_Name" />
                 <ScalarProperty Name="I_Name" ColumnName="I_Name" />
                 <ScalarProperty Name="I_Quantity" ColumnName="I_Quantity" />
                 <ScalarProperty Name="I_Expire" ColumnName="I_Expire" />
                 <ScalarProperty Name="I_ProdDate" ColumnName="I_ProdDate" />
+                <ScalarProperty Name="RemainDur" ColumnName="RemainDur" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

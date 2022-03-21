@@ -194,6 +194,9 @@
     <Compile Include="SelectItemDur_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="SelectItemExpire1_Result.cs">
+      <DependentUpon>EF_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="SelectItemExpire_Result.cs">
       <DependentUpon>EF_Model.tt</DependentUpon>
     </Compile>
@@ -218,6 +221,8 @@
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="Report4.rdlc" />
+    <EmbeddedResource Include="Report5.rdlc" />
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +272,8 @@
     <None Include="Properties\DataSources\ItemsMovement1_Result.datasource" />
     <None Include="Properties\DataSources\ItemsMovement_Result.datasource" />
     <None Include="Properties\DataSources\ItemsWareHouse_Result.datasource" />
+    <None Include="Properties\DataSources\SelectItemDur_Result.datasource" />
+    <None Include="Properties\DataSources\SelectItemExpire1_Result.datasource" />
     <None Include="Properties\DataSources\SelectWareHouse_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

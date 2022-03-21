@@ -39,6 +39,9 @@ namespace EF_Project
             IntervalcomboBox1.Items.Add("month");
             IntervalcomboBox1.Items.Add("Day");
 
+            intervalcomboBox.Items.Add("year");
+            intervalcomboBox.Items.Add("month");
+            intervalcomboBox.Items.Add("Day");
         }
         #region Warehouse tab
         private void Warehouses_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,9 +106,20 @@ namespace EF_Project
         #region specificItem tab
         private void Showbutton2_Click(object sender, EventArgs e)
         {
-
+            SelectItemDur_ResultBindingSource.DataSource = AppManger.Entities.SelectItemDur(int.Parse(DurationtextBox1.Text), IntervalcomboBox1.Text, startPicker1.Value);
+            
+            this.reportViewer4.RefreshReport();
         }
 
+        #endregion
+
+        #region Items nearing expiration date tab
+        private void showbutton_Click(object sender, EventArgs e)
+        {
+            SelectItemExpire1_ResultBindingSource.DataSource = AppManger.Entities.SelectItemExpire1(int.Parse(DurtextBox1.Text), intervalcomboBox.Text);
+
+            this.reportViewer5.RefreshReport();
+        }
         #endregion
         private void ExitWareHouse_Click(object sender, EventArgs e)
         {
@@ -120,6 +134,6 @@ namespace EF_Project
             this.Hide();
         }
 
-        
+       
     }
 }
