@@ -126,7 +126,7 @@ namespace EF_Project.Forms
                     AppManger.Entities.Exchange_Insert(int.Parse(InvoiceIDtextBox.Text), i, SelectedWareHouse.Key, SelectedClient.Key, dateTimePicker1.Value);
                 }
                 MessageBox.Show("Set Items Info", "Warning", AppManger.OKButton, AppManger.WarningIcon);
-                ItemscomboBox.Enabled = true;
+                //ItemscomboBox.Enabled = true;
             }
         }
         private void Add_Click(object sender, EventArgs e)
@@ -168,7 +168,7 @@ namespace EF_Project.Forms
                 quantitytextBox.Text = drow.Cells[5].Value.ToString();
 
             }
-            ItemscomboBox.Enabled = false;
+            //ItemscomboBox.Enabled = false;
         }
         private void Edit_Click(object sender, EventArgs e)
         {

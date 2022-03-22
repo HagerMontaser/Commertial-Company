@@ -127,7 +127,7 @@ namespace EF_Project.Forms
                     AppManger.Entities.Release_Insert(int.Parse(InvoiceIDtextBox.Text), i, SelectedWareHouse.Key, SelectedSupplier.Key, dateTimePicker1.Value);
                 }
                 MessageBox.Show("Set Items Info", "Warning", AppManger.OKButton, AppManger.WarningIcon);
-                ItemscomboBox.Enabled = true;
+                //ItemscomboBox.Enabled = true;
             }
         }
         private void Add_Click(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace EF_Project.Forms
                 ExpireDurTextBox.Text = drow.Cells[7].Value.ToString();
 
             }
-            ItemscomboBox.Enabled = false;
+            //ItemscomboBox.Enabled = false;
         }
         private void Edit_Click(object sender, EventArgs e)
         {

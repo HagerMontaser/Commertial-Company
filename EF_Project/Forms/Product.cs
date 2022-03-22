@@ -42,9 +42,10 @@ namespace EF_Project.Forms
                                join prod in AppManger.Entities.Items on real.I_ID equals prod.I_ID
                                where ware.W_Name == n.ToString()
                            select new { prod.I_ID, prod.I_Name, ware.W_Name };
+                
                 foreach (var p in Products)
                 {
-                    ProductGridView.Rows.Add(p.I_ID,p.I_Name,p.W_Name);
+                    ProductGridView.Rows.Add(p.I_ID, p.I_Name, p.W_Name);
                 }
             }
             ProdUnitcomboBox.Text = ProdCodetextBox.Text = ProductName.Text = ProdUnittextBox.Text = string.Empty;
